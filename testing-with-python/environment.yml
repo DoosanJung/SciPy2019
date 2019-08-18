@@ -1,0 +1,16 @@
+# Create full conda environment for development, including some useful tools
+name: python-testing
+channels:
+  - conda-forge
+dependencies:
+  - python=3
+  - ipython
+  - numpy
+  - matplotlib
+  - pandas>=0.24.2
+  - pytest>=2.4
+  - pytest-cov
+  - pytest-flake8
+  - pytest-mpl
+  - pytest-runner
+  - vcrpy
