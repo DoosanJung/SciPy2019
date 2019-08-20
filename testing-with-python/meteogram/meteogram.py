@@ -110,6 +110,17 @@ def build_asos_request_url(station, start_date=None, end_date=None):
     if not start_date:
         start_date = end_date - datetime.timedelta(hours=24)
 
+    # Make sure the starting and ending dates are not reversed
+    if start_date > end_date:
+        raise ValueError('Start date cannot be after end date.')
+
+    # Make sure the starting and ending dates are not in the future
+    if start_date > current_utc_time():
+        raise ValueError('Start date cannot be in the future')
+
+    if start_date > current_utc_time():
+        raise ValueError('Start date cannot be in the future')
+
     url_str = (f'https://mesonet.agron.iastate.edu/request/asos/'
                f'1min_dl.php?station%5B%5D={station}&tz=UTC&year1='
                f'{start_date:%Y}&month1={start_date:%m}&day1={start_date:%d}'
